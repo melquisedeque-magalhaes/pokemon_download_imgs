@@ -29,7 +29,7 @@ def get_sprite_url(url, sprite='front_default'):
 def main():
     start_time = datetime.now()
 
-    pokemons = get(urljoin(base_url, 'pokemon/?limit=100')).json()['results']
+    pokemons = get(urljoin(base_url, 'pokemon/?limit=10')).json()['results']
     image_url = {pokemon['name']: get_sprite_url(pokemon['url']) for pokemon in pokemons} # Ele está acessando os objetos do array chamado Pokemon, através da chave nome e url
     files = [download_file(name, url) for name, url in image_url.items()]
     time = datetime.now() - start_time
